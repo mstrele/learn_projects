@@ -22,7 +22,7 @@ damages = ['Damages not recorded', '100M', 'Damages not recorded', '40M', '27.9M
 deaths = [90,4000,16,3103,179,184,408,682,5,1023,43,319,688,259,37,11,2068,269,318,107,65,19325,51,124,17,1836,125,87,45,133,603,138,3057,74]
 
 # 1
-# Update Recorded Damages
+# Update Recorded Damages by converting M and B in floats.
 
 def upd_damages(damages):
   updated_damages = []
@@ -39,7 +39,7 @@ def upd_damages(damages):
 
 updat_damages = upd_damages(damages)
 
-
+#function that builds a dictionary with hurricanes and info about them
 def build_dictionary(names, month, year, max_sust_wind, area,updat_damages, deaths):
   detailed_hurr = {}
   for name in range(len(names)):
@@ -61,7 +61,7 @@ hurricanes = build_dictionary(names,months, years, max_sustained_winds, areas_af
 #print(hurricanes["Michael"])
 
 
-# Organizing by Year
+# function to organize the information by year
 def orginize_by_year(hurricanes, years):
   hurr_by_year = defaultdict(list)
   for i, v in zip(years, hurricanes.values()):
@@ -77,12 +77,12 @@ def orginize_by_year(hurricanes, years):
 info_by_years = orginize_by_year(hurricanes, years)
 #print(info_by_years)
 
-# Counting Damaged Areas
+# function that counts Damaged Areas
 
 def count_frequency(some_dict):
   areas_counted = defaultdict(int)
   for t in some_dict.values():
-    #next line should be commented if hurricanes values is used
+    #next line should be commented if hurricanes values are used
     for b in t:
       for k in b["Areas Affected"]:
         areas_counted[k] += 1
@@ -92,7 +92,7 @@ def count_frequency(some_dict):
 #print(count_frequency(info_by_years))
 affected_areas_count = count_frequency(info_by_years)
 
-
+#counts the maximum damage
 def max_areas_affected(areas_count):
     max_area = ""
     max_area_count = 0
@@ -149,7 +149,7 @@ rated_hurr = mortality_scale(hurricanes)
 #print(rated_hurr[5])
 
 
-#function to check the most expensive hurricane
+#function to check the most 'expensive' hurricane
 def num_of_dam(some_dict):
   hardest_hurr = ""
   damage_num = 0
