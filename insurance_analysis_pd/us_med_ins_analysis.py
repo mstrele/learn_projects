@@ -72,3 +72,6 @@ plt.show()
 
 
 
+som_list = [15,8,9,15,12,13,2,15,13,8,13,6,7]
+sorted_l = som_list.sort()
+print(sorted_l)
